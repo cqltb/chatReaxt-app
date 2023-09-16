@@ -33,7 +33,7 @@ const Register = () => {
           <div className="container mx-auto">
             <div className="w-full flex justify-between items-center py-4 px-8">
               <div className="text-center text-white font-bold">
-                Your Company
+              Tb-chat-app
               </div>
 
               <div className="items-center hidden sm:flex">
@@ -126,7 +126,7 @@ const Register = () => {
           <div className="container mx-auto text-center px-8">
             <p className="text-grey-dark mb-2 text-sm">
               This is a product of{" "}
-              <span className="font-bold">Your Company</span>
+              <span className="font-bold">Tb-chat-app</span>
             </p>
           </div>
         </footer>

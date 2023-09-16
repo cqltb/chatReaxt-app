@@ -3,7 +3,13 @@ import * as messageApi from "../store/API/messagesapi";
 const initailVlues= {
   text_message:"",from_person:0, to_person:0
 }
+
+// function generateUniqueKey() {
+//   return `div-${Math.floor(Math.random() * 1000000)}`;
+// }
+
 const chatSide = ({ message, _id ,setMessages}) => {
+  
   const [textMessage, setTextMessage] = useState(initailVlues);
   const [sendMsg] = messageApi.useSendMsgMutation();
   const [createMsg] = messageApi.useCreateMsgMutation();
@@ -48,12 +54,37 @@ const chatSide = ({ message, _id ,setMessages}) => {
 
 
   
-      const formatTime = (createdAt) => {
+    //   const formatTime = (createdAt) => {
+    //   const date = new Date(createdAt);
+    //   const minutes = date.getMinutes();
+    //   const seconds = date.getSeconds();
+    //   return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    // };
+
+    const formatTime = (createdAt) => {
       const date = new Date(createdAt);
-      const minutes = date.getMinutes();
-      const seconds = date.getSeconds();
-      return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      const currentDate = new Date();
+      const timeDifference = currentDate.getTime() - date.getTime();
+      const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+      const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
+      const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const weeksAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 7));
+      const monthsAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30));
+    
+      if (monthsAgo > 0) {
+        return `${monthsAgo} month${monthsAgo > 1 ? 's' : ''} ago`;
+      } else if (weeksAgo > 0) {
+        return `${weeksAgo} week${weeksAgo > 1 ? 's' : ''} ago`;
+      } else if (daysAgo > 0) {
+        return `${daysAgo} day${daysAgo > 1 ? 's' : ''} ago`;
+      } else if (hoursAgo > 0) {
+        return `${hoursAgo} hour${hoursAgo > 1 ? 's' : ''} ago`;
+      } else {
+        return `${minutesAgo} minute${minutesAgo > 1 ? 's' : ''} ago`;
+      }
     };
+
+
 
   return (
     <>
@@ -62,7 +93,7 @@ const chatSide = ({ message, _id ,setMessages}) => {
         className="w-full bg-whatsapp relative overflow-y-auto "
       >
         <div className="absolute bg-whatsapp w-[100%] mx-auto h-full ">
-          <div className=" bg-whatsapp w-full h-full overflow-y-auto">
+          <div className=" bg-whatsapp w-full h-full overflow-y-auto"  key={1}>
             {message.length > 0
               ? message.map((res, i) => {
                   const senderId = res.sender[0]._id;
@@ -105,7 +136,7 @@ const chatSide = ({ message, _id ,setMessages}) => {
                   if (senderId === _id && receiverId === from_person) {
                     return (
                       <>
-                        <div className="flex justify-start px-6">
+                        <div className="flex justify-start px-6"  key={res._id}>
                           <div className="single-message rounded-bl-lg text-gray-200 rounded-br-lg my-1  py-2 px-2">
                             <div className="flex flex-col ">
                             <div className="text-sm font-extralight flex justify-between">
@@ -153,14 +184,14 @@ const chatSide = ({ message, _id ,setMessages}) => {
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           version="1.1"
-                          xmlnsxlink="http://www.w3.org/1999/xlink"
-                          xmlnsSvgjs="http://svgjs.com/svgjs"
+                          xmlnsXlink="http://www.w3.org/1999/xlink"
+                          xmlnssvgjs="http://svgjs.com/svgjs"
                           width="24"
                           height="24"
                           x="0"
                           y="0"
                           viewBox="0 0 404.644 404.644"
-                          xml:space="preserve"
+                          xmlSpace="preserve"
                           className=""
                         >
                           <g>

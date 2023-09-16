@@ -75,3 +75,9 @@
   .main-messages {
     background: #0e1921f0;
   }
+
+
+  .tb{
+    position: absolute; width: 373px; height: 298px; left: 0px; top: 0px; touch-action: none; user-select: none; cursor: default;
+  }
+

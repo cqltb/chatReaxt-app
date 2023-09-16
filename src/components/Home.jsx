@@ -64,19 +64,20 @@ export default function Home() {
   return (
     <>
       <div>
-        <div className=" text-gray-300 bg-red-800 px-4 py-3 border-b border-gray-700">
+        <div className=" text-gray-300 bg-green-600 px-4 py-3 border-b border-gray-700">
           <div className="flex items-center relative">
             <div className="w-1/6">
-              {/* <img
+              <img
                 className="w-11 h-11 rounded-full"
                 id="personHeadshot"
-                src=""
+                src="/img/png/logo-color.png"
                 alt=""
-              />*/}
+              />
             </div> 
             <div className="w-5/6">
               <div className="text-xl text-white" id="personName">
                   TABARAK CHAT APP
+                  
               </div>
               <div className="text-sm truncate" id="messagePreview"></div>
             </div>
@@ -85,7 +86,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-screen flex space-x-0 border-t-8 green-border bg-black">
+      <div className="w-full h-screen flex border-t-8 green-border bg-black">
       
       <ASSIDE  handleOnClick={handleOnClick}  />
       
